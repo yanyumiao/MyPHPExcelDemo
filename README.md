@@ -1,5 +1,5 @@
-### Give PHPExcel demo
-本来想基于PHPExcel封装一下 经考虑 提供demo更合事宜
+### PHPExcel demo
+原计划基于PHPExcel对常见的操作进行封装 经考虑 提供demo更加方便
 
 ### 关于读
 TODO
