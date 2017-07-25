@@ -1,6 +1,6 @@
 <?php
 require_once '/var/www/PHPExcel-1.8.1/Classes/PHPExcel.php';
-//$inputName="demo.xlsx";
+//$inputName="2007.xlsx";
 $inputName="2003.xls";
 $objPHPExcel = PHPExcel_IOFactory::load($inputName);
 
@@ -12,20 +12,28 @@ $sheetData = $objPHPExcel->getActiveSheet()->toArray(); // default: null,true,tr
 print_r($sheetData);
 
 // read cell
-//$cellValue = $objPHPExcel->getActiveSheet()->getCell('A1')->getValue();
+$cellValue = $objPHPExcel->getActiveSheet()->getCell('A1')->getValue();
+var_dump($cellValue);
 $cellValue = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(0,1)->getValue(); // Notice: column from 0, row from 1
 var_dump($cellValue);
 
 // ------------------------------------- Write ----------------------------------------
-//$objPHPExcel->getActiveSheet()->setCellValue('A1', "hello");
-//$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,1,null); // Notice: column from 0, row from 1
+$objPHPExcel->getActiveSheet()->setCellValue('A1', "hello");
+$cellValue = $objPHPExcel->getActiveSheet()->getCell('A1')->getValue();
+var_dump($cellValue);
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,1,null); // Notice: column from 0, row from 1
+$cellValue = $objPHPExcel->getActiveSheet()->getCellByColumnAndRow(1,1)->getValue();
+var_dump($cellValue);
 
 // ------------------------------------- Delete ----------------------------------------
-//$objPHPExcel->getActiveSheet()->removeRow(1,1); //Notice: from row 1, total 1 row & the row number n move to row number n-1
-// or you can use setCellVlue() or setCellValueByColumnAndRow() to set null 
+$objPHPExcel->getActiveSheet()->removeRow(1,1); //Notice: from row 1, total 1 row & the row number n move to row number n-1
 $sheetData = $objPHPExcel->getActiveSheet()->toArray();
 print_r($sheetData);
-//exit;
+// or you can use setCellVlue() or setCellValueByColumnAndRow() to set null
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0,2,null);
+$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1,2,null);
+$sheetData = $objPHPExcel->getActiveSheet()->toArray();
+print_r($sheetData);
 
 // ------------------------------------- Save ----------------------------------------
 //$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
