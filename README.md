@@ -5,4 +5,4 @@
 推荐使用 PHPExcel_IOFactory::load()方法加载excel，然后进行读，测试xls、xlsx没有兼容问题
 
 ##### PHPExcel使用时遇到的一些问题
-测试中发现利用PHPExcel_Writer_Excel5对xls类型的excel在保存后再次读时
+测试中发现利用PHPExcel_Writer_Excel5对xls类型的excel在保存后再次读时会出错
