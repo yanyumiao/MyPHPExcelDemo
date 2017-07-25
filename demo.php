@@ -39,12 +39,14 @@ print_r($sheetData);
 //$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 //$objWriter->save($inputName);
 
-// ------------------------------------- Bug ----------------------------------------
-// Bug with Excel5 
+
+// 暂不推荐使用下面的方法
+// 测试发现对于xls类型的excel，在使用PHPExcel_Writer_Excel5保存后会出错
+// ------------------------------------- More ----------------------------------------
 //$inputFileType = PHPExcel_IOFactory::identify($inputName);  
-//$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, $inputFileType); // error when read agin
-//$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); // pass
-//$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel); // error when read agin
+//$objReader = PHPExcel_IOFactory::createReader(inputFileType);
+//$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, $inputFileType);
+
+// ------------------------------------- Error ----------------------------------------
+//$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
 //$objWriter->save($inputName);
-
-
